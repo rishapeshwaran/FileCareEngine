@@ -4,17 +4,17 @@ import 'package:file_picker/file_picker.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import '../../epi_endpoint.dart';
+import '../../api_endpoint.dart';
 import 'image_scan_result_page.dart';
 
-class AnalyzeImagePdfPage extends StatefulWidget {
-  const AnalyzeImagePdfPage({super.key});
+class AnalyzeImagePage extends StatefulWidget {
+  const AnalyzeImagePage({super.key});
 
   @override
-  State<AnalyzeImagePdfPage> createState() => _AnalyzeImagePdfPageState();
+  State<AnalyzeImagePage> createState() => _AnalyzeImagePageState();
 }
 
-class _AnalyzeImagePdfPageState extends State<AnalyzeImagePdfPage> {
+class _AnalyzeImagePageState extends State<AnalyzeImagePage> {
   File? selectedFile;
   bool isUploading = false;
 
@@ -24,7 +24,7 @@ class _AnalyzeImagePdfPageState extends State<AnalyzeImagePdfPage> {
   Future<void> pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
-      allowedExtensions: ['png', 'jpg', 'jpeg', 'tiff', 'svg', 'gif', 'pdf'],
+      allowedExtensions: ['png', 'jpg', 'jpeg', 'tiff', 'svg', 'gif'],
     );
 
     if (result != null) {
@@ -41,8 +41,8 @@ class _AnalyzeImagePdfPageState extends State<AnalyzeImagePdfPage> {
 
     var request = http.MultipartRequest(
       'POST',
-      // Uri.parse("http://10.10.51.237:8000/scan/malware"),
-      Uri.parse(ENDPOINT + "/scan/malware"),
+      // Uri.parse("http://10.37.21.238:8000/scan/malware"),
+      Uri.parse("$ENDPOINT/scan/malware"),
     );
 
     request.files.add(
@@ -73,7 +73,7 @@ class _AnalyzeImagePdfPageState extends State<AnalyzeImagePdfPage> {
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
         backgroundColor: primaryBlue,
-        title: const Text("Scan Image & PDF"),
+        title: const Text("Scan Image "),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -150,7 +150,7 @@ class _AnalyzeImagePdfPageState extends State<AnalyzeImagePdfPage> {
                       ),
                       const SizedBox(height: 6),
                       const Text(
-                        "Supports Images & PDF",
+                        "Supports Images",
                         style: TextStyle(color: Colors.black54),
                       )
                     ],

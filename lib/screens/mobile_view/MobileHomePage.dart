@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../api_endpoint.dart';
 import 'analyze_apk_file_page.dart';
 import 'analyze_image_pdf_page.dart';
 import 'home_page.dart';
 import 'installed_apps_page.dart';
+import 'scan_pdf_page.dart';
 
 class MobileHomePage extends StatelessWidget {
   const MobileHomePage({super.key});
@@ -86,7 +88,22 @@ class MobileHomePage extends StatelessWidget {
             ),
 
             const SizedBox(height: 20),
-
+            _buildFeatureCard(
+              icon: Icons.picture_as_pdf,
+              title: "Scan Image",
+              description: "Detect hidden threats inside images",
+              primaryBlue: primaryBlue,
+              accentGreen: accentGreen,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const AnalyzeImagePage(),
+                  ),
+                );
+              },
+            ),
+            SizedBox(height: 20),
             // CARD 3
             _buildFeatureCard(
               icon: Icons.picture_as_pdf,
@@ -99,7 +116,8 @@ class MobileHomePage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => const AnalyzeImagePdfPage(),
+                    // builder: (_) => const AnalyzeImagePdfPage(),
+                    builder: (_) => const PdfScanPage(),
                   ),
                 );
               },
@@ -113,6 +131,17 @@ class MobileHomePage extends StatelessWidget {
         selectedItemColor: accentGreen,
         unselectedItemColor: primaryBlue.withOpacity(0.6),
         showUnselectedLabels: true,
+        currentIndex: 0,
+        onTap: (index) {
+          if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => const EndpointSettingsPage(),
+              ),
+            );
+          }
+        },
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -128,6 +157,25 @@ class MobileHomePage extends StatelessWidget {
           ),
         ],
       ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   selectedItemColor: accentGreen,
+      //   unselectedItemColor: primaryBlue.withOpacity(0.6),
+      //   showUnselectedLabels: true,
+      //   items: const [
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.home),
+      //       label: "Home",
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.history),
+      //       label: "Scan History",
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.settings),
+      //       label: "Settings",
+      //     ),
+      //   ],
+      // ),
     );
   }
 
