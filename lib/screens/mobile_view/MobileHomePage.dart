@@ -107,9 +107,8 @@ class MobileHomePage extends StatelessWidget {
             // CARD 3
             _buildFeatureCard(
               icon: Icons.picture_as_pdf,
-              title: "Scan Image & PDF Files",
-              description:
-                  "Detect hidden threats inside images and PDF documents",
+              title: "Scan PDF Files",
+              description: "Detect hidden threats inside PDF documents",
               primaryBlue: primaryBlue,
               accentGreen: accentGreen,
               onTap: () {

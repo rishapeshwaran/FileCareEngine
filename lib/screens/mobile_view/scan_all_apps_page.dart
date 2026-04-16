@@ -113,7 +113,7 @@ class _ScanAllAppsPageState extends State<ScanAllAppsPage> {
         } else {
           r.status = ScanStatus.done;
           //rishi
-          if (label.contains("malware") && (cached["confidence"] ?? 0) > 0.65) {
+          if (label.contains("malware") && (cached["confidence"] ?? 0) > 0.70) {
             malwareCount++;
           } else {
             safeCount++;
@@ -173,7 +173,7 @@ class _ScanAllAppsPageState extends State<ScanAllAppsPage> {
             scanResults[i].status = ScanStatus.done;
             //rishi
             if (label.toLowerCase().contains("malware") &&
-                (response["confidence"] ?? 0) > 0.65) {
+                (response["confidence"] ?? 0) > 0.70) {
               malwareCount++;
             } else {
               safeCount++;
@@ -493,7 +493,7 @@ class _ScanAllAppsPageState extends State<ScanAllAppsPage> {
         final label = result?["label"] ?? "";
         // rishi
         final isMalware = label.toLowerCase().contains("malware") &&
-            (result?["confidence"] ?? 0) > 0.65;
+            (result?["confidence"] ?? 0) > 0.70;
         borderColor = isMalware
             ? Colors.red.withOpacity(0.3)
             : accentGreen.withOpacity(0.3);

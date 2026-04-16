@@ -28,7 +28,7 @@ class ScanStatisticsPage extends StatelessWidget {
     final malwareApps = scanResults
         .where((r) =>
             r.status == ScanStatus.done &&
-            r.result?["confidence"] > 0.65 &&
+            r.result?["confidence"] > 0.70 &&
             (r.result?["label"] ?? "").toLowerCase().contains("malware"))
         .toList();
 

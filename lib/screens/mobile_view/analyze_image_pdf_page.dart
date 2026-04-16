@@ -41,7 +41,7 @@ class _AnalyzeImagePageState extends State<AnalyzeImagePage> {
 
     var request = http.MultipartRequest(
       'POST',
-      // Uri.parse("http://10.37.21.238:8000/scan/malware"),
+      // Uri.parse("http://10.10.51.167:8000/scan/malware"),
       Uri.parse("$ENDPOINT/scan/malware"),
     );
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // Global variable
-String ENDPOINT = "http://10.37.21.238:8000";
+String ENDPOINT = "http://10.57.29.238:8000";
 
 class EndpointSettingsPage extends StatefulWidget {
   const EndpointSettingsPage({super.key});

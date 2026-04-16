@@ -88,7 +88,7 @@ class RuleResult {
 
 // ─── Service ─────────────────────────────────────────────────────────────────
 class PdfScanService {
-  // static const String _baseUrl = 'http://10.37.21.238:8000';
+  // static const String _baseUrl = 'http://10.10.51.167:8000';
   static String _baseUrl = ENDPOINT;
 
   static Future<PdfScanResult> scanPdf(File file) async {

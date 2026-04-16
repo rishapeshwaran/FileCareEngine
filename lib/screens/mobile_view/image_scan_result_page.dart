@@ -122,30 +122,53 @@ class _ImageScanResultPageState extends State<ImageScanResultPage>
                 widget.result["malicious"].toString().toUpperCase()),
           if (widget.result["verdict"] != null)
             _infoRow("Verdict", widget.result["verdict"]),
-          if (widget.result["reason"] != null)
-            Padding(
-              padding: const EdgeInsets.only(top: 12),
-              child: Container(
-                padding: const EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  color: Colors.red.withOpacity(0.05),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Row(
-                  children: [
-                    const Icon(Icons.report_problem, color: Colors.red),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Text(
-                        widget.result["reason"],
-                        style: const TextStyle(
-                            color: Colors.red, fontWeight: FontWeight.w500),
-                      ),
+          widget.result["reason"] != null
+              ? Padding(
+                  padding: const EdgeInsets.only(top: 12),
+                  child: Container(
+                    padding: const EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      color: Colors.red.withOpacity(0.05),
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                  ],
-                ),
-              ),
-            )
+                    child: Row(
+                      children: [
+                        const Icon(Icons.report_problem, color: Colors.red),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Text(
+                            widget.result["reason"],
+                            style: const TextStyle(
+                                color: Colors.red, fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              : Padding(
+                  padding: const EdgeInsets.only(top: 12),
+                  child: Container(
+                    padding: const EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      color: Colors.red.withOpacity(0.05),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.report_problem, color: Colors.red),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Text(
+                            widget.result["reason"],
+                            style: const TextStyle(
+                                color: Colors.red, fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
         ],
       ),
     );
